@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Joshua said:</string>
-    <string name="app_name">LonelyTwitter</string>
+    <string name="main">Today's Habits</string>
+    <string name="view">All Habits</string>
+    <string name="add">Add Habit</string>
+    <string name="app_name">tommy3-HabitTracker</string>
+
+    <string name="cancel">Cancel</string>
     <string name="save">Save</string>
-    <string name="clear">Clear</string>
-    
+    <string name="daily">Daily</string>
+    <string name="mon">Mondays</string>
+    <string name="tue">Tuesdays</string>
+    <string name="wed">Wednesdays</string>
+    <string name="thu">Thursdays</string>
+    <string name="fri">Fridays</string>
+    <string name="sat">Saturdays</string>
+    <string name="sun">Sundays</string>
+    <string name="enterName">Enter a name for the new habit:</string>
+    <string name="selectDays">Which days should the habit occur on?</string>
+
+    <string name="back">Back</string>
+
 </resources>

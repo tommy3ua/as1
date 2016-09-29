@@ -5,23 +5,12 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <TextView
+    <ExpandableListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/main"
-        android:id="@+id/header"
+        android:layout_height="match_parent"
+        android:id="@+id/expandableListView"
         android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:background="@android:color/holo_green_dark"
-        android:textColor="@android:color/background_light" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="435dp"
-        android:id="@+id/todaysHabits"
-        android:layout_weight="0.80"
-        android:background="@android:color/background_dark" />
+        android:layout_weight="1.20" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -35,8 +24,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="79dp"
             android:layout_height="40dp"
-            android:text="@string/view"
-            android:id="@+id/allHabits"
+            android:text="@string/back"
+            android:id="@+id/button"
             android:background="@android:color/holo_green_dark"
             android:textColor="@android:color/background_light"
             android:layout_weight="0.06"
@@ -53,12 +42,11 @@
             android:layout_width="79dp"
             android:layout_height="40dp"
             android:text="@string/add"
-            android:id="@+id/addHabit"
+            android:id="@+id/button2"
             android:background="@android:color/holo_green_dark"
             android:textColor="@android:color/background_light"
             android:layout_weight="0.06"
             android:textStyle="bold" />
 
     </LinearLayout>
-
 </LinearLayout>
