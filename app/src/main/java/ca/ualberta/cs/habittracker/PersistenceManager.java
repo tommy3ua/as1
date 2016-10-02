@@ -16,9 +16,7 @@ import java.io.OutputStreamWriter;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-/**
- * Created by L on 9/27/2016.
- */
+
 public class PersistenceManager {
 
     private static final String FILENAME = "tommy3habittracker.sav";

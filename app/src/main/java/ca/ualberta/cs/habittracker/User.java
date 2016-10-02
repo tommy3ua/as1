@@ -6,10 +6,6 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * Created by L on 9/27/2016.
- */
-
 // acts as a controller; i.e. activities interact with the core only through the User class
 
 public class User {
@@ -28,20 +24,16 @@ public class User {
             return ourInstance;
         }
         else {
-            today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+            if (today != Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
+            {
+                today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+            }
             return ourInstance;
         }
     }
 
     private User() {
     }
-
-    /*
-    public User(Context c) {
-        habits = new ArrayList<Habit>();
-        pm = new PersistenceManager(c);
-    }
-    */
 
     public void loadFromFile(Context c) {
         habits = pm.loadHabits(c);
@@ -70,9 +62,7 @@ public class User {
     }
 
     public void deleteHabit(Habit h) {
-        if (!habits.remove(h)) {
-            Log.d("habit", "delete habit failed");
-        }
+        habits.remove(h);
     }
 
     public Habit getHabitByID(int id) {

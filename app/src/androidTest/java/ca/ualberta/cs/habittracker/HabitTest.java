@@ -11,5 +11,35 @@ public class HabitTest extends ActivityInstrumentationTestCase2 {
         super(HabitTrackerActivity.class);
     }
 
+    public void testGetName() {
 
+    }
+
+    public void testComplete() {
+
+    }
+
+    public void testGetTotalCompletions() {
+
+    }
+
+    public void testGetCompletions() {
+
+    }
+
+    public void testDeleteCompletions() {
+
+    }
+
+    public void testOccursOnDay() {
+
+    }
+
+    public void testGetID() {
+
+    }
+
+    public void testCompletedToday() {
+
+    }
 }

@@ -10,4 +10,28 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
     public UserTest () {
         super(HabitTrackerActivity.class);
     }
+
+    public void testGetHabits() {
+
+    }
+
+    public void testGetTodaysHabits() {
+
+    }
+
+    public void testAddHabit() {
+
+    }
+
+    public void testDeleteHabit() {
+
+    }
+
+    public void testGetHabitByID() {
+
+    }
+
+    public void testGenerateHabitID() {
+
+    }
 }

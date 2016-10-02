@@ -10,4 +10,12 @@ public class PersistenceManagerTest extends ActivityInstrumentationTestCase2 {
     public PersistenceManagerTest() {
         super(HabitTrackerActivity.class);
     }
+
+    public void testLoadHabits() {
+
+    }
+
+    public void testSaveHabits() {
+
+    }
 }

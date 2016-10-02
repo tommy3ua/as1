@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Master Chief on 2016-10-01.
- */
 public class ViewHabitsAdapter extends ArrayAdapter<Habit> {
 
     ArrayList<Habit> habits;

@@ -84,28 +84,4 @@ public class AddHabitActivity extends Activity {
         super.onStart();
         User.getInstance().loadFromFile(getApplicationContext());
     }
-
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu m) {
-        getMenuInflater().inflate(R.menu.main, m);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main:
-                startActivity(new Intent(this, HabitTrackerActivity.class));
-                return false;
-            case R.id.add:
-                return false;
-            case R.id.view:
-                startActivity(new Intent(this, ViewHabitsActivity.class));
-                return true;
-            default:
-                return false;
-            //return super.onOptionsItemSelected(item);
-        }
-    }
-    */
 }

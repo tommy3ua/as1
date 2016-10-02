@@ -1,11 +1,14 @@
 package ca.ualberta.cs.habittracker;
 
-import java.util.ArrayList;
-import java.util.Date;
+import android.util.Log;
 
-/**
- * Created by L on 9/27/2016.
- */
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class Habit {
 
     private Date date;
@@ -14,6 +17,7 @@ public class Habit {
     private ArrayList<Completion> completions;
     private int dailyCompletions;
     private int id;
+    private int[] lastTimeCompleted;
 
     public Habit(String n, Date d, ArrayList<Integer> day, int i) {
         name = n;
@@ -22,41 +26,28 @@ public class Habit {
         completions = new ArrayList<Completion>();
         dailyCompletions = 0;
         id = i;
-    }
-
-    @Override
-    public String toString() {
-        if (completedToday()) {
-            return name + " - COMPLETE";
-        }
-        else {
-            return name + " - INCOMPLETE";
-        }
+        lastTimeCompleted = new int[3];
+        lastTimeCompleted[0] = -1;
+        lastTimeCompleted[1] = -1;
+        lastTimeCompleted[2] = -1;
     }
 
     public String getName() {
         return name;
     }
 
-    public Date getDate() { return date; }
-
     public int getTotalCompletions() {
         return completions.size();
     }
 
-    public int getDailyCompletions() {
-        return dailyCompletions;
-    }
-
-    public void editName(String n) {
-        name = n;
-    }
-
-    public void editDate(Date d) { date = d; }
-
     public void complete() {
         completions.add(new Completion(new Date()));
         dailyCompletions++;
+        // code taken from http://stackoverflow.com/questions/5050170/how-do-i-get-a-date-without-time-in-java Oct 2, 2016
+        Calendar cal = Calendar.getInstance();
+        lastTimeCompleted[0] = cal.get(Calendar.MONTH);
+        lastTimeCompleted[1] = cal.get(Calendar.DAY_OF_MONTH);
+        lastTimeCompleted[2] = cal.get(Calendar.YEAR);
     }
 
     public ArrayList<Completion> getCompletions() {
@@ -65,10 +56,6 @@ public class Habit {
 
     public void deleteCompletion(Completion c) {
         completions.remove(c);
-    }
-
-    public void resetCompletions() {
-        dailyCompletions = 0;
     }
 
     public boolean occursOnDay(Integer day) {
@@ -85,6 +72,13 @@ public class Habit {
     }
 
     public boolean completedToday() {
+        Calendar cal = Calendar.getInstance();
+        if (lastTimeCompleted[0] != cal.get(Calendar.MONTH)
+                || lastTimeCompleted[1] != cal.get(Calendar.DAY_OF_MONTH)
+                || lastTimeCompleted[2] != cal.get(Calendar.YEAR)) {
+            dailyCompletions = 0;
+            return false;
+        }
         return dailyCompletions > 0;
     }
 }
