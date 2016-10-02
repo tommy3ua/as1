@@ -1,5 +1,7 @@
 package ca.ualberta.cs.habittracker;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -11,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 /**
@@ -24,20 +27,24 @@ public class PersistenceManager {
 
     }
 
-    public ArrayList<Habit> LoadHabits() {
+    public ArrayList<Habit> loadHabits(Context context) {
         ArrayList<Habit> result = new ArrayList<Habit>();
         try {
-            FileInputStream fis = openFileInput(FILENAME);
+            FileInputStream fis = context.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             Gson gson = new Gson();
             // code taken from http://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt Sept.22, 2016
-            Type listType = new TypeToken<ArrayList<Habit>>(){}.getType();
+            Type listType = new TypeToken<ArrayList<Habit>>() {
+            }.getType();
             result = gson.fromJson(in, listType);
             in.close();
             fis.close();
+        } catch (JsonSyntaxException e) {
+            saveHabits(new ArrayList<Habit>(), context);
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            throw new RuntimeException();
+            saveHabits(new ArrayList<Habit>(), context);
+            // throw new RuntimeException();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             throw new RuntimeException();
@@ -45,9 +52,9 @@ public class PersistenceManager {
         return result;
     }
 
-    public void SaveHabits(ArrayList<Habit> habits) {
+    public void saveHabits(ArrayList<Habit> habits, Context context) {
         try {
-            FileOutputStream fos = openFileOutput(FILENAME,0);
+            FileOutputStream fos = context.openFileOutput(FILENAME,0);
             OutputStreamWriter writer = new OutputStreamWriter(fos);
             Gson gson = new Gson();
             gson.toJson(habits, writer);

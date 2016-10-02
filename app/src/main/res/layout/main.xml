@@ -12,53 +12,12 @@
         android:text="@string/main"
         android:id="@+id/header"
         android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:background="@android:color/holo_green_dark"
-        android:textColor="@android:color/background_light" />
+        android:textStyle="bold" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="435dp"
         android:id="@+id/todaysHabits"
-        android:layout_weight="0.80"
-        android:background="@android:color/background_dark" />
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal"
-        android:weightSum="1"
-        android:background="@android:color/background_dark">
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="79dp"
-            android:layout_height="40dp"
-            android:text="@string/view"
-            android:id="@+id/allHabits"
-            android:background="@android:color/holo_green_dark"
-            android:textColor="@android:color/background_light"
-            android:layout_weight="0.06"
-            android:textStyle="bold" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="47dp"
-            android:layout_weight="0.43"
-            android:background="@android:color/background_dark" />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="79dp"
-            android:layout_height="40dp"
-            android:text="@string/add"
-            android:id="@+id/addHabit"
-            android:background="@android:color/holo_green_dark"
-            android:textColor="@android:color/background_light"
-            android:layout_weight="0.06"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+        android:layout_weight="0.80" />
 
 </LinearLayout>

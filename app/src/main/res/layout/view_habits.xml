@@ -5,48 +5,36 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <ExpandableListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/expandableListView"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1.20" />
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal"
-        android:weightSum="1"
-        android:background="@android:color/background_dark">
+        android:measureWithLargestChild="false"
+        android:weightSum="1">
 
         <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="79dp"
-            android:layout_height="40dp"
-            android:text="@string/back"
-            android:id="@+id/button"
-            android:background="@android:color/holo_green_dark"
-            android:textColor="@android:color/background_light"
-            android:layout_weight="0.06"
-            android:textStyle="bold" />
-
-        <Space
             android:layout_width="wrap_content"
-            android:layout_height="47dp"
-            android:layout_weight="0.43"
-            android:background="@android:color/background_dark" />
+            android:layout_height="wrap_content"
+            android:text="@string/viewCompletions"
+            android:id="@+id/completions" />
 
         <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="79dp"
-            android:layout_height="40dp"
-            android:text="@string/add"
-            android:id="@+id/button2"
-            android:background="@android:color/holo_green_dark"
-            android:textColor="@android:color/background_light"
-            android:layout_weight="0.06"
-            android:textStyle="bold" />
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:id="@+id/delete" />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/allHabits"
+            android:choiceMode="singleChoice" />
+    </LinearLayout>
+
 </LinearLayout>

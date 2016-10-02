@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="main">Today's Habits</string>
+    <string name="main">Click incomplete habits (red) to complete them</string>
     <string name="view">All Habits</string>
     <string name="add">Add Habit</string>
     <string name="app_name">tommy3-HabitTracker</string>
@@ -16,9 +16,12 @@
     <string name="fri">Fridays</string>
     <string name="sat">Saturdays</string>
     <string name="sun">Sundays</string>
-    <string name="enterName">Enter a name for the new habit:</string>
+    <string name="enterName">Enter a name for the habit:</string>
     <string name="selectDays">Which days should the habit occur on?</string>
-
-    <string name="back">Back</string>
+    <string name="date">Habit entry date:</string>
+    <string name="back">Return</string>
+    <string name="viewCompletions">View Completions</string>
+    <string name="delete">Delete Habit</string>
+    <string name="deleteCompletion">Delete selected completion</string>
 
 </resources>

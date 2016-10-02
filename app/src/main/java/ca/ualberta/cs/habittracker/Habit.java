@@ -8,27 +8,40 @@ import java.util.Date;
  */
 public class Habit {
 
-    public enum Days {Mon, Tue, Wed, Thurs, Fri, Sat, Sun};
-
-    private String dateCreated;
+    private Date date;
     private String name;
-    private ArrayList<Days> days;
-    private int totalCompletions;
+    private ArrayList<Integer> days;
+    private ArrayList<Completion> completions;
     private int dailyCompletions;
+    private int id;
 
-    public Habit(String n, ArrayList<Days> d) {
+    public Habit(String n, Date d, ArrayList<Integer> day, int i) {
         name = n;
-        days = d;
-        totalCompletions = 0;
+        date = d;
+        days = day;
+        completions = new ArrayList<Completion>();
         dailyCompletions = 0;
+        id = i;
+    }
+
+    @Override
+    public String toString() {
+        if (completedToday()) {
+            return name + " - COMPLETE";
+        }
+        else {
+            return name + " - INCOMPLETE";
+        }
     }
 
     public String getName() {
         return name;
     }
 
+    public Date getDate() { return date; }
+
     public int getTotalCompletions() {
-        return totalCompletions;
+        return completions.size();
     }
 
     public int getDailyCompletions() {
@@ -39,23 +52,36 @@ public class Habit {
         name = n;
     }
 
+    public void editDate(Date d) { date = d; }
+
     public void complete() {
-        totalCompletions++;
+        completions.add(new Completion(new Date()));
         dailyCompletions++;
     }
 
+    public ArrayList<Completion> getCompletions() {
+        return completions;
+    }
+
+    public void deleteCompletion(Completion c) {
+        completions.remove(c);
+    }
+
     public void resetCompletions() {
-        totalCompletions = 0;
         dailyCompletions = 0;
     }
 
-    public boolean occursOnDay(Habit.Days day) {
+    public boolean occursOnDay(Integer day) {
         if (days.contains(day)) {
             return true;
         }
         else {
             return false;
         }
+    }
+
+    public int getID() {
+        return id;
     }
 
     public boolean completedToday() {
