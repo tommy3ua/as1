@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+// activity to view all habits
 public class ViewHabitsActivity extends Activity {
 
     private ListView habits;
@@ -27,12 +28,14 @@ public class ViewHabitsActivity extends Activity {
         habits = (ListView) findViewById(R.id.allHabits);
 
         // code modified from http://stackoverflow.com/questions/4508979/android-listview-get-selected-item Oct.1, 2016
+        // click habits to select them
         habits.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedHabit = (Habit)habits.getItemAtPosition(position);
             }
         });
 
+        // delete selected habit
         delete.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -43,6 +46,7 @@ public class ViewHabitsActivity extends Activity {
             }
         });
 
+        // view list of completions for selected habit
         completions.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -65,19 +69,21 @@ public class ViewHabitsActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        // update user habits
         User.getInstance().loadFromFile(getApplicationContext());
-        // edit list item xml to change appearance of list item
         adapter = new ViewHabitsAdapter(this,
                 R.layout.completions_list, User.getInstance().getHabits(), getLayoutInflater());
         habits.setAdapter(adapter);
     }
 
     @Override
+    // dropdown menu
     public boolean onCreateOptionsMenu(Menu m) {
         getMenuInflater().inflate(R.menu.main, m);
         return true;
     }
 
+    // code for dropdown menu
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.main:
@@ -90,7 +96,6 @@ public class ViewHabitsActivity extends Activity {
                 return false;
             default:
                 return false;
-            //return super.onOptionsItemSelected(item);
         }
     }
 }

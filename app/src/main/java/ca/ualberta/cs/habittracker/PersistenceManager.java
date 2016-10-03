@@ -17,6 +17,7 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
+// class that manages loading and saving of data through json
 public class PersistenceManager {
 
     private static final String FILENAME = "tommy3habittracker.sav";

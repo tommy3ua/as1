@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// adapter for ViewHabitsActivity
 public class ViewHabitsAdapter extends ArrayAdapter<Habit> {
 
     ArrayList<Habit> habits;
@@ -21,6 +22,7 @@ public class ViewHabitsAdapter extends ArrayAdapter<Habit> {
     }
 
     // code modified from https://code.tutsplus.com/tutorials/android-from-scratch-understanding-adapters-and-adapter-views--cms-26646 Oct 1, 2016
+    // displays for each habit its name and completion count
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

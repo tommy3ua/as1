@@ -16,6 +16,7 @@ public class User {
 
     private static User ourInstance = null;
 
+    // static class so the API can interact with the main code consistently through the User class
     public static User getInstance() {
         if (ourInstance == null) {
             ourInstance = new User();
@@ -75,6 +76,7 @@ public class User {
         return null;
     }
 
+    // when the user wants to add a new habit, they should generate a unique ID for each habit
     public int generateHabitID() {
         Boolean success;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {

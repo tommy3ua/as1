@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.view.MenuItem;
 
+// launcher activity
+// lets the user view today's habits and complete them
 public class HabitTrackerActivity extends Activity {
 
 	private ListView todaysHabits;
@@ -22,14 +24,13 @@ public class HabitTrackerActivity extends Activity {
 		todaysHabits = (ListView) findViewById(R.id.todaysHabits);
 
         // code modified from http://stackoverflow.com/questions/17851687/how-to-handle-the-click-event-in-listview-in-android Sept.30, 2016
-        todaysHabits.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // complete habits by clicking them
+		todaysHabits.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Habit entry = (Habit)parent.getAdapter().getItem(position);
                 entry.complete();
                 User.getInstance().saveToFile(getApplicationContext());
                 adapter.notifyDataSetChanged();
-                // complete habits
-               // ListEntry entry= (ListEntry) parent.getAdapter().getItem(position);
             }
         });
 	}
@@ -43,19 +44,21 @@ public class HabitTrackerActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+        // refresh data
 		User.getInstance().loadFromFile(getApplicationContext());
-        // edit list item xml to change appearance of list item
 		adapter = new DailyHabitsAdapter(this,
 				R.layout.completions_list, User.getInstance().getTodaysHabits(), getLayoutInflater());
 		todaysHabits.setAdapter(adapter);
 	}
 
 	@Override
+    // dropdown menu
 	public boolean onCreateOptionsMenu(Menu m) {
 		getMenuInflater().inflate(R.menu.main, m);
 		return true;
 	}
 
+    // dropdown menu
 	public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.main:
