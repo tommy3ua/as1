@@ -1,19 +1,14 @@
 package ca.ualberta.cs.habittracker;
 
-import android.util.Log;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class Habit {
 
     private Date date;
     private String name;
-    private ArrayList<Integer> days;
+    private ArrayList<Integer> daysOfOccurence;
     private ArrayList<Completion> completions;
     private int dailyCompletions;
     private int id;
@@ -22,7 +17,7 @@ public class Habit {
     public Habit(String n, Date d, ArrayList<Integer> day, int i) {
         name = n;
         date = d;
-        days = day;
+        daysOfOccurence = day;
         completions = new ArrayList<Completion>();
         dailyCompletions = 0;
         id = i;
@@ -59,7 +54,11 @@ public class Habit {
     }
 
     public boolean occursOnDay(Integer day) {
-        if (days.contains(day)) {
+        if (daysOfOccurence == null)
+        {
+            return false;
+        }
+        if (daysOfOccurence.contains(day)) {
             return true;
         }
         else {

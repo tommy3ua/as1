@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 // acts as a controller; i.e. activities interact with the core only through the User class
 
@@ -58,8 +59,8 @@ public class User {
         return result;
     }
 
-    public void addHabit(Habit h) {
-        habits.add(h);
+    public void addHabit(String t, Date d, ArrayList<Integer> e) {
+        habits.add(new Habit(t, d, e, generateHabitID()));
     }
 
     public void deleteHabit(Habit h) {
@@ -77,7 +78,7 @@ public class User {
     }
 
     // when the user wants to add a new habit, they should generate a unique ID for each habit
-    public int generateHabitID() {
+    private int generateHabitID() {
         Boolean success;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             success = true;

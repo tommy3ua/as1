@@ -63,7 +63,7 @@ public class AddHabitActivity extends Activity {
                 int year =  datePicker.getYear();
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, day);
-                User.getInstance().addHabit(new Habit(text, calendar.getTime(), days, User.getInstance().generateHabitID()));
+                User.getInstance().addHabit(text, calendar.getTime(), days);
                 User.getInstance().saveToFile(getApplicationContext());
                 finish();
             }
