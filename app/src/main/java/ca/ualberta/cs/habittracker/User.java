@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class User {
 
-    private ArrayList<Habit> habits;
+    private static ArrayList<Habit> habits;
     private static PersistenceManager pm;
     private static Integer today;
 
@@ -23,9 +23,11 @@ public class User {
             ourInstance = new User();
             pm = new PersistenceManager();
             today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+            habits = new ArrayList<Habit>();
             return ourInstance;
         }
         else {
+            // updates the day
             if (today != Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
             {
                 today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
@@ -79,6 +81,9 @@ public class User {
 
     // when the user wants to add a new habit, they should generate a unique ID for each habit
     private int generateHabitID() {
+        if (habits == null || habits.isEmpty()) {
+            return 0;
+        }
         Boolean success;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             success = true;
